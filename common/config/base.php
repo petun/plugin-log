@@ -141,6 +141,10 @@ $config = [
             'ru-RU'=>'Русский (РФ)',
             'uk-UA'=>'Українська (Україна)'
         ],
+	    'availableDataLists'=>[
+		    'typeList1' => 'List Number One',
+		    'typeList2' => 'List Number Two',
+	    ]
     ],
 ];
 

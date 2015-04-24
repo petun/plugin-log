@@ -337,3 +337,9 @@ mail to `eugene@terentev.net`
 This template was created mostly for developers NOT for end users.
 This is a point where you can begin your application, rather than creating it from scratch.
 Good luck!
+
+
+###Usefull commands for gii
+```bash
+./console/yii gii/crud --modelClass=common\\models\\DataList --controllerClass=backend\\controllers\\DataListController --viewPath=backend\\views\\data-list --enableI18N=1 --messageCategory=backend
+```

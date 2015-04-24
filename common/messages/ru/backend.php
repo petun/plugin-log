@@ -150,4 +150,11 @@ return [
     'i18n' => 'I18N',
     'i18n Message' => 'Перевод',
     'i18n Source Message' => 'Текст',
+	'Data List' => 'Базовые списки',
+	'Data Lists' => 'Базовые списки',
+	'Create Data List' => 'Добавить элемент списка',
+	'Type' => 'Тип',
+	'Name' => 'Название',
+	'Position' => 'Позиция'
+
 ];

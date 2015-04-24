@@ -21,7 +21,6 @@ use yii\helpers\Inflector;
  * @property string $body
  * @property string $thumbnail_base_url
  * @property string $thumbnail_path
- * @property string $body
  * @property array $attachments
  * @property integer $author_id
  * @property integer $updater_id
