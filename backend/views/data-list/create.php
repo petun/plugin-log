@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="data-list-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<p><?= Html::a(Yii::t('backend', 'Back to Lists'), ['index'], ['class' => 'btn btn-default']) ?></p>
 
     <?= $this->render('_form', [
         'model' => $model,

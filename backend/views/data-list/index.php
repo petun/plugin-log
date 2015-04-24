@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="data-list-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('backend', 'Create Data List'), ['create'], ['class' => 'btn btn-success']) ?>

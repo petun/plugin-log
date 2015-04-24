@@ -155,6 +155,7 @@ return [
 	'Create Data List' => 'Добавить элемент списка',
 	'Type' => 'Тип',
 	'Name' => 'Название',
-	'Position' => 'Позиция'
+	'Position' => 'Позиция',
+	'Back to Lists' => 'Назад к спискам',
 
 ];

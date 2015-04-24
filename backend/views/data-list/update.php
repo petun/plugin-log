@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
 <div class="data-list-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<p><?= Html::a(Yii::t('backend', 'Back to Lists'), ['index'], ['class' => 'btn btn-default']) ?></p>
 
     <?= $this->render('_form', [
         'model' => $model,
