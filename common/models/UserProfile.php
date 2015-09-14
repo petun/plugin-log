@@ -4,7 +4,6 @@ namespace common\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
-use yii\helpers\Url;
 
 /**
  * This is the model class for table "user_profile".
@@ -104,10 +103,10 @@ class UserProfile extends \yii\db\ActiveRecord
         return null;
     }
 
-    public function getAvatar()
+    public function getAvatar($default = null)
     {
         return $this->avatar_path
             ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
-            : false;
+            : $default;
     }
 }

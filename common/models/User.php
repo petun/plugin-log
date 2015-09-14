@@ -2,8 +2,8 @@
 namespace common\models;
 
 use cheatsheet\Time;
+use common\commands\command\AddToTimelineCommand;
 use Yii;
-use yii\base\NotSupportedException;
 use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -89,6 +89,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['username', 'email'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['username'],'filter','filter'=>'\yii\helpers\Html::encode']
         ];
     }
 
@@ -260,15 +261,15 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function afterSignup(array $profileData = [])
     {
-        TimelineEvent::log(
-            'user',
-            'signup',
-            [
-                'publicIdentity' => $this->getPublicIdentity(),
-                'userId' => $this->getId(),
+        Yii::$app->commandBus->handle(new AddToTimelineCommand([
+            'category' => 'user',
+            'event' => 'signup',
+            'data' => [
+                'public_identity' => $this->getPublicIdentity(),
+                'user_id' => $this->getId(),
                 'created_at' => $this->created_at
             ]
-        );
+        ]));
         $profile = new UserProfile();
         $profile->locale = Yii::$app->language;
         $profile->load($profileData, '');

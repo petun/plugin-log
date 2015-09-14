@@ -1,11 +1,10 @@
 # Env
 /.env
-/nginx.conf
+/vhost.conf
 
 # composer
 /vendor
 composer.phar
-composer.lock
 
 # IDE
 .idea
