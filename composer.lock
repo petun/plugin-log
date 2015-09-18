@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5b516b293b9edc57ea711eff058d21ed",
+    "hash": "1c29fa3f106d7feb679d09ce0fcfacfd",
+    "content-hash": "adaa4405ce3f0f3c9cb7a20635353084",
     "packages": [
         {
             "name": "asofter/yii2-imperavi-redactor",
@@ -368,21 +369,22 @@
         },
         {
             "name": "bower-asset/eonasdan-bootstrap-datetimepicker",
-            "version": "4.15.35",
+            "version": "4.17.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Eonasdan/bootstrap-datetimepicker.git",
-                "reference": "e8bddc60e73c1ec2475f827be36e1957af72e2ea"
+                "reference": "fd8bd86dd78f789fb742798b7d49aba0a957af62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/e8bddc60e73c1ec2475f827be36e1957af72e2ea",
-                "reference": "e8bddc60e73c1ec2475f827be36e1957af72e2ea",
+                "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/fd8bd86dd78f789fb742798b7d49aba0a957af62",
+                "reference": "fd8bd86dd78f789fb742798b7d49aba0a957af62",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/jquery": ">=1.8.3",
-                "bower-asset/moment": ">=2.9.0"
+                "bower-asset/moment": ">=2.9.0",
+                "bower-asset/moment-timezone": ">=0.4.0"
             },
             "type": "bower-asset-library",
             "extra": {
@@ -683,6 +685,39 @@
                     "package.json"
                 ]
             }
+        },
+        {
+            "name": "bower-asset/moment-timezone",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moment/moment-timezone.git",
+                "reference": "f71d6ea7537ae280518f7ac345beaba1209ab48e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment-timezone/zipball/f71d6ea7537ae280518f7ac345beaba1209ab48e",
+                "reference": "f71d6ea7537ae280518f7ac345beaba1209ab48e",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/moment": ">=2.6.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "builds/moment-timezone-with-data-2010-2020.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "tests",
+                    "tasks",
+                    "data/*/20*.json",
+                    "contributing.md",
+                    "Gruntfile.js",
+                    "index.js",
+                    "package.json"
+                ]
+            },
+            "description": "Parse and display moments in any timezone."
         },
         {
             "name": "bower-asset/punycode",
@@ -1766,16 +1801,16 @@
         },
         {
             "name": "trntv/yii2-datetime-widget",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/trntv/yii2-datetime-widget.git",
-                "reference": "8695accd67e33fb7707e2c11f50d98bdc5251caa"
+                "reference": "70f297ef24a0c883f371fc9d33a735de448f8d2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/trntv/yii2-datetime-widget/zipball/8695accd67e33fb7707e2c11f50d98bdc5251caa",
-                "reference": "8695accd67e33fb7707e2c11f50d98bdc5251caa",
+                "url": "https://api.github.com/repos/trntv/yii2-datetime-widget/zipball/70f297ef24a0c883f371fc9d33a735de448f8d2d",
+                "reference": "70f297ef24a0c883f371fc9d33a735de448f8d2d",
                 "shasum": ""
             },
             "require": {
@@ -1812,20 +1847,20 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-09-08 23:41:20"
+            "time": "2015-09-09 09:42:47"
         },
         {
             "name": "trntv/yii2-file-kit",
-            "version": "1.1.2",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/trntv/yii2-file-kit.git",
-                "reference": "1fa0d3d0cd93bd6b0cdd3a3bb482e43d78dcaec0"
+                "reference": "8e3b8f4223c3f66dd68b47aeb4841873873a8afc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/trntv/yii2-file-kit/zipball/1fa0d3d0cd93bd6b0cdd3a3bb482e43d78dcaec0",
-                "reference": "1fa0d3d0cd93bd6b0cdd3a3bb482e43d78dcaec0",
+                "url": "https://api.github.com/repos/trntv/yii2-file-kit/zipball/8e3b8f4223c3f66dd68b47aeb4841873873a8afc",
+                "reference": "8e3b8f4223c3f66dd68b47aeb4841873873a8afc",
                 "shasum": ""
             },
             "require": {
@@ -1862,7 +1897,7 @@
                 }
             ],
             "description": "Yii2 file upload and storage kit",
-            "time": "2015-09-04 16:15:33"
+            "time": "2015-09-11 22:17:36"
         },
         {
             "name": "trntv/yii2-glide",
@@ -2050,12 +2085,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "fd315d2f1f2b741760f8a5f1cb0dfb732eb8bd57"
+                "reference": "42749cbc9e36cbdd4b7659a0055f15598619decb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/fd315d2f1f2b741760f8a5f1cb0dfb732eb8bd57",
-                "reference": "fd315d2f1f2b741760f8a5f1cb0dfb732eb8bd57",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/42749cbc9e36cbdd4b7659a0055f15598619decb",
+                "reference": "42749cbc9e36cbdd4b7659a0055f15598619decb",
                 "shasum": ""
             },
             "require": {
@@ -2131,7 +2166,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-09-08 12:25:56"
+            "time": "2015-09-13 23:12:35"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2894,16 +2929,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.2.2",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "2d7c03c0e4e080901b8f33b2897b0577be18a13c"
+                "reference": "ef1ca6835468857944d5c3b48fa503d5554cff2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/2d7c03c0e4e080901b8f33b2897b0577be18a13c",
-                "reference": "2d7c03c0e4e080901b8f33b2897b0577be18a13c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ef1ca6835468857944d5c3b48fa503d5554cff2f",
+                "reference": "ef1ca6835468857944d5c3b48fa503d5554cff2f",
                 "shasum": ""
             },
             "require": {
@@ -2952,7 +2987,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-08-04 03:42:39"
+            "time": "2015-09-14 06:51:16"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3134,16 +3169,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.6",
+            "version": "4.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357"
+                "reference": "dab2ada9e9a503d2ec3c32fe0fb59dea9bdd9dfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2246830f4a1a551c67933e4171bf2126dc29d357",
-                "reference": "2246830f4a1a551c67933e4171bf2126dc29d357",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dab2ada9e9a503d2ec3c32fe0fb59dea9bdd9dfa",
+                "reference": "dab2ada9e9a503d2ec3c32fe0fb59dea9bdd9dfa",
                 "shasum": ""
             },
             "require": {
@@ -3202,7 +3237,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-08-24 04:09:38"
+            "time": "2015-09-14 06:57:22"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3259,6 +3294,52 @@
                 "xunit"
             ],
             "time": "2015-08-19 09:14:08"
+        },
+        {
+            "name": "schmunk42/yii2-giiant",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmunk42/yii2-giiant.git",
+                "reference": "3d9a405b6e701834d14584b0bde5066cc5aa9ed4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmunk42/yii2-giiant/zipball/3d9a405b6e701834d14584b0bde5066cc5aa9ed4",
+                "reference": "3d9a405b6e701834d14584b0bde5066cc5aa9ed4",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-gii": "~2.0.1"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "schmunk42\\giiant\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "schmunk42\\giiant\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "schmunk@usrbin.de",
+                    "homepage": "http://www.usrbin.de"
+                }
+            ],
+            "description": "Gii CRUD generator for Yii 2 Framework",
+            "homepage": "https://github.com/schmunk42/yii2-giiant",
+            "keywords": [
+                "crud",
+                "gii",
+                "yii2"
+            ],
+            "time": "2015-01-05 18:06:12"
         },
         {
             "name": "sebastian/comparator",
@@ -3691,13 +3772,13 @@
             "version": "v2.7.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console.git",
-                "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8"
+                "url": "git@github.com:symfony/Console.git",
+                "reference": "f1f7376766394f409b9b33a57a5675a52f8aad93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/9ff9032151186bd66ecee727d728f1319f52d1d8",
-                "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/f1f7376766394f409b9b33a57a5675a52f8aad93",
+                "reference": "f1f7376766394f409b9b33a57a5675a52f8aad93",
                 "shasum": ""
             },
             "require": {
@@ -4145,8 +4226,6 @@
     "stability-flags": {
         "yiisoft/yii2": 20,
         "asofter/yii2-imperavi-redactor": 20,
-        "trntv/yii2-file-kit": 20,
-        "trntv/yii2-datetime-widget": 20,
         "trntv/cheatsheet": 20
     },
     "prefer-stable": false,
