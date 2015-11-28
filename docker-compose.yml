@@ -1,24 +1,30 @@
-cli:
-  build: .
+data:
+  image: busybox:latest
   volumes:
     - ./:/app
-  working_dir: /app
-  entrypoint: /app/console/yii
-  expose:
-    - 9000
-  links:
-    - db
 
 fpm:
-  build: docker/fpm
+  build: docker/php
   volumes_from:
-    - cli
+    - data
+  volumes_from:
+    - data
   expose:
     - 9000
   links:
     - db
   environment:
     XDEBUG_CONFIG: "idekey=PHPSTORM remote_enable=On remote_host=172.17.42.1"
+
+cli:
+  build: docker/php
+  volumes_from:
+    - data
+  working_dir: /app
+  entrypoint: /app/console/yii
+  tty: true
+  links:
+    - db
 
 nginx:
   image: nginx:latest
@@ -39,5 +45,5 @@ db:
   environment:
     MYSQL_ROOT_PASSWORD: root
     MYSQL_DATABASE: yii2-starter-kit
-    MYSQL_USER: root
-    MYSQL_PASSWORD: root
+    MYSQL_USER: ysk_dbu
+    MYSQL_PASSWORD: ysk_pass

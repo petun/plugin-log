@@ -5,6 +5,8 @@
 # composer
 /vendor
 composer.phar
+## remove in production!
+composer.lock
 
 # IDE
 .idea
