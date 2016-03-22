@@ -6,6 +6,7 @@
 [![Packagist](https://img.shields.io/packagist/dt/trntv/yii2-starter-kit.svg)](https://packagist.org/packages/trntv/yii2-starter-kit)
 [![PayPal donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X7UFA3F3ALPM8 "Donate once-off to this project using Paypal")
 [![Dependency Status](https://www.versioneye.com/php/trntv:yii2-starter-kit/badge.svg)](https://www.versioneye.com/php/trntv:yii2-starter-kit)
+[![Build Status](https://travis-ci.org/trntv/yii2-starter-kit.svg?branch=master)](https://travis-ci.org/trntv/yii2-starter-kit)
 
 <!-- /BADGES -->
 
@@ -14,6 +15,9 @@ This is Yii2 start application template.
 It was created and developing as a fast start for building an advanced sites based on Yii2. 
 
 It covers typical use cases for a new project and will help you not to waste your time doing the same work in every project
+
+## Before you start
+Please, consider helping project via [contributions](https://github.com/trntv/yii2-starter-kit/issues) or [donations](#donations). 
 
 ## TABLE OF CONTENTS
 - [Demo](#demo)
@@ -25,11 +29,14 @@ It covers typical use cases for a new project and will help you not to waste you
 - [Application components](#application-components)
 - [Console commands](docs/console.md)
 - [Testing](docs/testing.md)
-- [FAQ](#faq)
+- [FAQ](docs/faq.md)
 - [How to contribute?](#how-to-contribute)
+- [Donations](#donations)
 - [Have any questions](#have-any-questions)
 
 ##DEMO
+Demo is hosted by awesome [Digital Ocean](https://m.do.co/c/d7f000191ea8)
+
 Frontend:
 http://yii2-starter-kit.terentev.net
 
@@ -56,10 +63,10 @@ Password: user
 
 ## FEATURES
 - Beautiful and open source dashboard theme for backend [AdminLTE 2](http://almsaeedstudio.com/AdminLTE)
-- Translations: English, Spanish, Russian, Ukrainian
+- Translations: English, Spanish, Russian, Ukrainian, Chinese
 - Translations Editor
 - Language change action + behavior to choose locale based on browser preferred language 
-- Sign in, Sign up, profile(avatar, locale, personal data) etc
+- Sign in, Sign up, profile(avatar, locale, personal data), email activation etc
 - OAuth authorization
 - User management
 - RBAC with predefined `guest`, `user`, `manager` and `administrator` roles
@@ -70,6 +77,7 @@ Password: user
 - Ready-to-go RESTful API module
 - [File storage component + file upload widget](https://github.com/trntv/yii2-file-kit)
 - On-demand thumbnail creation [trntv/yii2-glide](https://github.com/trntv/yii2-glide)
+- Command Bus with queued and async tasks support [trntv/yii2-command-bus](https://github.com/trntv/yii2-command-bus)
 - Useful behaviors (GlobalAccessBehavior, CacheInvalidateBehavior, MaintenanceBehavior)
 - Yii2 log web interface
 - Application timeline component
@@ -86,8 +94,8 @@ Password: user
 - Extended IDE autocompletion
 - Nginx config example
 - Test-ready
-- Docker support
-- Vagrant support
+- Docker support and Vagrant support
+- Built-in [mailcatcher](http://mailcatcher.me/)
 - Assets compression and concatenation
 - [Some useful shortcuts](https://github.com/trntv/yii2-starter-kit/blob/master/common/shortcuts.php)
 - many other features i'm lazy to write about :-)
@@ -216,6 +224,9 @@ Add in your application config:
 ```
 It will allow access to you application only for authentificated users. 
 
+### Command Bus
+Read more about command bus on in [official repository](https://github.com/trntv/yii2-command-bus#yii2-command-bus)
+
 ### Widgets configurable from backend
 #### Carousel
 1. Create carousel in backend
@@ -281,19 +292,40 @@ In view:
 ```
 ### Other
 - ``common\behaviors\GlobalAccessBehavior`` - allows to set access rules for your application in application config
-- ``common\behaviors\LocaleBehavior`` - discover user locale from browser or account settings and set it
-- ``common\behaviors\LoginTimestampBehavior`` - logs user login time
-- ``common\validators\JsonValidator`` - validates a value to be a valid json
-- ``common\rbac\OwnModelRule`` - simple rule for RBAC to check if the current user is model owner
 
-##FAQ
-### 1. Where is Gii?
-Gii is available on:
-- http://yii2-starter-kit.dev/gii
-- http://backend.yii2-starter-kit.dev/gii
+- ``common\behaviors\LocaleBehavior`` - discover user locale from browser or account settings and set it
+
+- ``common\behaviors\LoginTimestampBehavior`` - logs user login time
+
+- ``common\validators\JsonValidator`` - validates a value to be a valid json
+
+- ``common\rbac\rule\OwnModelRule`` - simple rule for RBAC to check if the current user is model owner
+```php
+Yii::$app->user->can('editOwnModel', ['model' => $model]);
+```
+
+- ``common\filters\OwnModelAccessFilter`` - action filter to check if user is allowed to manage this model
+```php
+public function behaviors()
+    {
+        return [
+            'modelAccess' => [
+                'class' => OwnModelAccessFilter::className(),
+                'only' => ['view', 'update', 'delete'],
+                'modelClass' => Article::className()
+            ],
+        ];
+    }
+```
 
 ##How to contribute?
 You can contribute in any way you want. Any help appreciated, but most of all i need help with docs (^_^)
+
+##Donations
+- [Paypal] (https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X7UFA3F3ALPM8)
+- [Bitcoin] (https://www.coinbase.com/checkouts/2f1c1cb31c395e5aaafa1ba70003552e)
+- [WebMoney] (Z110052695454)
+- Other way: [eugene@terentev.net](mailto:eugene@terentev.net)
 
 ##Have any questions?
 mail to [eugene@terentev.net](mailto:eugene@terentev.net)

@@ -2,7 +2,8 @@
 namespace common\models;
 
 use cheatsheet\Time;
-use common\commands\command\AddToTimelineCommand;
+use common\commands\AddToTimelineCommand;
+use common\models\query\UserQuery;
 use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -16,7 +17,6 @@ use yii\web\IdentityInterface;
  * @property integer $id
  * @property string $username
  * @property string $password_hash
- * @property string $password_reset_token
  * @property string $email
  * @property string $auth_key
  * @property string $access_token
@@ -33,8 +33,9 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 1;
+    const STATUS_NOT_ACTIVE = 1;
+    const STATUS_ACTIVE = 2;
+    const STATUS_DELETED = 3;
 
     const ROLE_USER = 'user';
     const ROLE_MANAGER = 'manager';
@@ -49,6 +50,14 @@ class User extends ActiveRecord implements IdentityInterface
     public static function tableName()
     {
         return '{{%user}}';
+    }
+
+    /**
+     * @return UserQuery
+     */
+    public static function find()
+    {
+        return new UserQuery(get_called_class());
     }
 
     /**
@@ -70,7 +79,9 @@ class User extends ActiveRecord implements IdentityInterface
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => 'access_token'
                 ],
-                'value' => Yii::$app->getSecurity()->generateRandomString(40)
+                'value' => function() {
+                    return Yii::$app->getSecurity()->generateRandomString(40);
+                }
             ]
         ];
     }
@@ -98,9 +109,9 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'email'], 'unique'],
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-            [['username'],'filter','filter'=>'\yii\helpers\Html::encode']
+            ['status', 'default', 'value' => self::STATUS_NOT_ACTIVE],
+            ['status', 'in', 'range' => array_keys(self::statuses())],
+            [['username'],'filter','filter' => '\yii\helpers\Html::encode']
         ];
     }
 
@@ -133,7 +144,10 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+        return static::find()
+            ->active()
+            ->andWhere(['id' => $id])
+            ->one();
     }
 
     /**
@@ -141,7 +155,10 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
+        return static::find()
+            ->active()
+            ->andWhere(['access_token' => $token, 'status' => self::STATUS_ACTIVE])
+            ->one();
     }
 
     /**
@@ -152,7 +169,10 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::find()
+            ->active()
+            ->andWhere(['username' => $username, 'status' => self::STATUS_ACTIVE])
+            ->one();
     }
 
     /**
@@ -163,33 +183,14 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByLogin($login)
     {
-        return static::findOne([
-            'and',
-            ['or', ['username' => $login], ['email' => $login]],
-            'status' => self::STATUS_ACTIVE
-        ]);
-    }
-
-    /**
-     * Finds user by password reset token
-     *
-     * @param string $token password reset token
-     * @return static|null
-     */
-    public static function findByPasswordResetToken($token)
-    {
-        $expire = Time::SECONDS_IN_A_DAY;
-        $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
-        if ($timestamp + $expire < time()) {
-            // token expired
-            return null;
-        }
-
-        return static::findOne([
-            'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE
-        ]);
+        return static::find()
+            ->active()
+            ->andWhere([
+                'and',
+                ['or', ['username' => $login], ['email' => $login]],
+                'status' => self::STATUS_ACTIVE
+            ])
+            ->one();
     }
 
     /**
@@ -238,33 +239,16 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates new password reset token
-     */
-    public function generatePasswordResetToken()
-    {
-        $this->password_reset_token = Yii::$app->getSecurity()->generateRandomString() . '_' . time();
-    }
-
-    /**
-     * Removes password reset token
-     */
-    public function removePasswordResetToken()
-    {
-        $this->password_reset_token = null;
-    }
-
-    /**
      * Returns user statuses list
-     * @param mixed $status
      * @return array|mixed
      */
-    public static function getStatuses($status = false)
+    public static function statuses()
     {
-        $statuses = [
+        return [
+            self::STATUS_NOT_ACTIVE => Yii::t('common', 'Not Active'),
             self::STATUS_ACTIVE => Yii::t('common', 'Active'),
             self::STATUS_DELETED => Yii::t('common', 'Deleted')
         ];
-        return $status !== false ? ArrayHelper::getValue($statuses, $status) : $statuses;
     }
 
     /**

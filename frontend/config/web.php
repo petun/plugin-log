@@ -5,7 +5,8 @@ $config = [
     'defaultRoute' => 'site/index',
     'modules' => [
         'user' => [
-            'class' => 'frontend\modules\user\Module'
+            'class' => 'frontend\modules\user\Module',
+            //'shouldBeActivated' => true
         ],
         'api' => [
             'class' => 'frontend\modules\api\Module',
@@ -26,7 +27,7 @@ $config = [
                 'facebook' => [
                     'class' => 'yii\authclient\clients\Facebook',
                     'clientId' => getenv('FACEBOOK_CLIENT_ID'),
-                    'clientSecret' => getenv('GITHUB_CLIENT_SECRET'),
+                    'clientSecret' => getenv('FACEBOOK_CLIENT_SECRET'),
                     'scope' => 'email,public_profile',
                     'attributeNames' => [
                         'name',

@@ -1,8 +1,33 @@
 Yii Starter Kit Change Log
 ==========================
 
-2.1.0 under development
------------------------
+under development
+-----------------
+- Dockerfile based on PHP7
+- Travis CI integration
+
+2.1.3
+-----
+- Ads placing example
+- DbText widget changes
+- Fixed #368: User form fixes
+- Fixed #369: missing field from user table in application tests
+
+2.1.2
+-----
+- Fixed: Invalid user status validation
+- Fixed #363: Remove references to password_reset_token
+
+2.1.1
+-----
+- Mailcathcer support
+- Optional user email activation
+
+2.1.0
+-----
+- Enh #354: Command Bus implemented with yii2-command-bus extension
+- Enh #321: editOwnModel permission
+- Fixed #326
 - API Fixes
 - Fixed: password_confirm not validated
 - Enh: Shortcuts file added

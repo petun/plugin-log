@@ -17,11 +17,17 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Article View' => 'Шаблон статьи',
-    'Page View' => 'Шаблон страницы',
+    'API access token' => '',
+    'Email' => '',
+    'Expire At' => '',
+    'Not Active' => '',
+    'Password' => '',
+    'Roles' => '',
+    'Token' => '',
     '"{attribute}" must be a valid JSON' => '"{attribute}" должен содержать валидный JSON',
     'Active' => 'Активно',
     'Article ID' => 'ID Статьи',
+    'Article View' => 'Шаблон статьи',
     'Author' => 'Автор',
     'Base URL' => 'Базовый URL',
     'Base Url' => 'Базовый Url',
@@ -49,6 +55,7 @@ return [
     'Middlename' => 'Отчество',
     'Name' => 'Имя',
     'Order' => 'Порядок',
+    'Page View' => 'Шаблон страницы',
     'Parent Category' => 'Родительская категория',
     'Path' => 'Путь',
     'Picture' => 'Аватар',

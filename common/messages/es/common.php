@@ -17,11 +17,17 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Article View' => 'Vista de Artículo',
-    'Page View' => 'Vista de Página',
+    'API access token' => '',
+    'Email' => '',
+    'Expire At' => '',
+    'Not Active' => '',
+    'Password' => '',
+    'Roles' => '',
+    'Token' => '',
     '"{attribute}" must be a valid JSON' => '"{attribute}" debe de ser JSON válido',
     'Active' => 'Activo',
     'Article ID' => 'ID Artículo',
+    'Article View' => 'Vista de Artículo',
     'Author' => 'Autor',
     'Base URL' => 'URL Base',
     'Base Url' => 'Url Base',
@@ -49,6 +55,7 @@ return [
     'Middlename' => 'Segundo Nombre',
     'Name' => 'Nombre',
     'Order' => 'Orden',
+    'Page View' => 'Vista de Página',
     'Parent Category' => 'Categoría Padre',
     'Path' => 'Ruta',
     'Picture' => 'Imagen',
