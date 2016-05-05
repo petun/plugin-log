@@ -181,11 +181,8 @@ if (YII_ENV_DEV) {
     $config['components']['cache'] = [
         'class' => 'yii\caching\DummyCache'
     ];
-    $config['components']['mailer']['transport'] = [
-        'class' => 'Swift_SmtpTransport',
-        'host' => env('SMTP_HOST'),
-        'port' => env('SMTP_PORT'),
-    ];
+
+    $config['components']['mailer']['useFileTransport'] = true;
 }
 
 return $config;
