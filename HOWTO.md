@@ -98,6 +98,7 @@ if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
 ## View
 http://www.yiiframework.com/doc-2.0/yii-widgets-activeform.html
+
 http://www.yiiframework.com/doc-2.0/yii-bootstrap-activefield.html
 ```php
 <?php
