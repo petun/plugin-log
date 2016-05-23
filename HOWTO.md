@@ -194,6 +194,7 @@ class FrontendAsset extends AssetBundle
 ```sql
 SELECT FROM_UNIXTIME(1447430881); // mysql
 SELECT to_char(current_timestamp, 'Day, DD  HH12:MI:SS') FROM TABLE1; // postgres
+SELECT to_char(to_timestamp(created_at), 'DD.mm.YYYY  HH24:MI:SS')FROM table1; // postgres
 ```
 
 
