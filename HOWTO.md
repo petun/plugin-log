@@ -197,6 +197,36 @@ SELECT to_char(current_timestamp, 'Day, DD  HH12:MI:SS') FROM TABLE1; // postgre
 SELECT to_char(to_timestamp(created_at), 'DD.mm.YYYY  HH24:MI:SS')FROM table1; // postgres
 ```
 
+# Import from CSV files
+```php
+$files=\yii\helpers\FileHelper::findFiles(Yii::getAlias('@common'). '/data');
+        foreach ($files as $file) {
+
+            $importer = new CSVImporter;
+
+            $importer->setData(new CSVReader([
+                'filename' => $file,
+                'fgetcsvOptions' => [
+                    'delimiter' => '\n'
+                ],
+                'startFromLine' => 0
+            ]));
+
+            $codes = [];
+            foreach ($importer->getData() as $item) {
+                $codes[] = [$item[0]];
+                if (count($codes) == 500) {
+                    try{
+                        $this->batchInsert('{{%table}}', ['id'], $codes);
+                    }
+                    catch(Exception $e){
+                        echo $e->getMessage(). "\n";
+                    }
+                    $codes = [];
+                }
+            }
+        }
+```
 
 # TODOS
 - Glide + Upload Behavior
