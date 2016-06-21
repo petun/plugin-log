@@ -229,6 +229,25 @@ $files=\yii\helpers\FileHelper::findFiles(Yii::getAlias('@common'). '/data');
         }
 ```
 
+# Export to CSV
+```php
+$csv = new CsvExporter($fileName);
+
+        $csv->setHeader([
+            'code',
+        ]);
+
+        foreach ($results as $result) {
+            if (!empty($result))
+                $csv->addRow([
+                    $result
+                ]);
+
+        }
+        $file = Yii::getAlias('@common') . $path . $fileName . '.csv';
+        $csv->out($file);
+```
+
 # TODOS
 - Glide + Upload Behavior
 - Search guide 
