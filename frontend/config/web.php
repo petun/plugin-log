@@ -20,6 +20,11 @@ $config = [
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
             'clients' => [
+                'vkontakte' => [
+                  'class' => 'yii\authclient\clients\VKontakte',
+                  'clientId' => env('VK_CLIENT_ID'),
+                  'clientSecret' => env('VK_CLIENT_SECRET'),
+              ],
                 'github' => [
                     'class' => 'yii\authclient\clients\GitHub',
                     'clientId' => env('GITHUB_CLIENT_ID'),
@@ -49,6 +54,7 @@ $config = [
             }
         ],
         'request' => [
+            'baseUrl' => '',
             'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY')
         ],
         'user' => [
