@@ -139,6 +139,14 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserSocials()
+    {
+        return $this->hasMany(UserSocial::className(), ['user_id' => 'id']);
+    }
+
+    /**
      * @inheritdoc
      */
     public static function findIdentity($id)
@@ -274,6 +282,12 @@ class User extends ActiveRecord implements IdentityInterface
         // Default role
         $auth = Yii::$app->authManager;
         $auth->assign($auth->getRole(User::ROLE_USER), $this->getId());
+    }
+
+    public function afterSignupSocial(array $userSocialData){
+        $userSocial = new UserSocial();
+        $userSocial->load($userSocialData, '');
+        $this->link('userSocials', $userSocial);
     }
 
     /**

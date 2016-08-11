@@ -15,6 +15,8 @@ $this->title = Yii::t('frontend', 'User Settings')
 
     <?php $form = ActiveForm::begin(); ?>
 
+
+
     <h2><?php echo Yii::t('frontend', 'Profile settings') ?></h2>
 
     <?php echo $form->field($model->getModel('profile'), 'picture')->widget(
@@ -50,6 +52,15 @@ $this->title = Yii::t('frontend', 'User Settings')
     <div class="form-group">
         <?php echo Html::submitButton(Yii::t('frontend', 'Update'), ['class' => 'btn btn-primary']) ?>
     </div>
+
+    <h2><?php echo Yii::t('frontend', 'Social Link settings') ?></h2>
+
+    <div class="form-group">
+        <?php echo yii\authclient\widgets\AuthChoice::widget([
+            'baseAuthUrl' => ['/user/sign-in/oauth-link']
+        ]) ?>
+    </div>
+
 
     <?php ActiveForm::end(); ?>
 
