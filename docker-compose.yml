@@ -20,7 +20,7 @@ app:
 nginx:
   image: nginx:latest
   ports:
-    - "80:80"
+    - "8888:80"
   volumes:
     - ./:/app
     - ./docker/nginx/vhost.conf:/etc/nginx/conf.d/vhost.conf
@@ -33,13 +33,12 @@ mailcatcher:
       - "1080:1080"
 
 db:
-  image: mysql:5.7
+  image: postgres:9.6.0
   volumes:
-    - /var/lib/mysql
+    - /var/lib/postgresql/data
   ports:
-    - "3306:3306"
+     - "5454:5432"
   environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: yii2-starter-kit
-    MYSQL_USER: ysk_dbu
-    MYSQL_PASSWORD: ysk_pass
+    POSTGRES_USER: plugin
+    POSTGRES_PASSWORD: plugin
+    POSTGRES_DB: plugin

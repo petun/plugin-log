@@ -48,7 +48,8 @@
     "bower-asset/jquery-slimscroll": "^1.3",
     "bower-asset/flot": "^0.8",
     "symfony/process": "^3.0",
-    "kotchuprik/yii2-odnoklassniki-authclient": "^1.1"
+    "kotchuprik/yii2-odnoklassniki-authclient": "^1.1",
+    "kartik-v/yii2-date-range": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0",
