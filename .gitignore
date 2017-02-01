@@ -1,6 +1,5 @@
 # Env
 /.env
-/vhost.conf
 
 # composer
 /vendor
@@ -27,3 +26,6 @@ phpunit.phar
 
 # Vagrant
 /.vagrant
+
+# Tests
+tests/codeception/*/_support/_generated/*
